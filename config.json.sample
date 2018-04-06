@@ -1,0 +1,18 @@
+[
+    {
+        "pattern": "example1.com/",
+        "root": "assets.example1.com",
+        "key": {
+            "certFile": "/etc/letsencrypt/live/example1.com/fullchain.pem",
+            "keyFile": "/etc/letsencrypt/live/example1.com/privkey.pem"
+        }
+    },
+    {
+        "pattern": "example2.com/",
+        "root": "example2.com",
+        "key": {
+            "certFile": "/etc/letsencrypt/live/example2.com/fullchain.pem",
+            "keyFile": "/etc/letsencrypt/live/example2.com/privkey.pem"
+        }
+    }
+]
