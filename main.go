@@ -28,6 +28,13 @@ func handler(root string) http.Handler {
 	})
 }
 
+func logger(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("from %q request %q\n", r.RemoteAddr, r.RequestURI)
+		next.ServeHTTP(w, r)
+	})
+}
+
 func main() {
 	// Carrega arquivo JSON com as configurações
 	b, err := ioutil.ReadFile("config.json")
@@ -49,7 +56,7 @@ func main() {
 
 	// Carrega as assinaturas dos sites contidos em siteList
 	for _, site := range siteList {
-		http.Handle(site.Pattern, handler(site.Root))
+		http.Handle(site.Pattern, logger(handler(site.Root)))
 
 		cert, err := tls.LoadX509KeyPair(
 			site.Key.CertFile,
