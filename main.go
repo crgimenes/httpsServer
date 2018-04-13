@@ -19,13 +19,13 @@ type key struct {
 	KeyFile  string `json:"keyFile"`
 }
 
-func handler(root string) http.HandlerFunc {
+func handler(root string) http.Handler {
 	h := http.FileServer(http.Dir(root))
-	return func(w http.ResponseWriter, r *http.Request) {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Strict-Transport-Security",
 			"max-age=63072000; includeSubDomains")
 		h.ServeHTTP(w, r)
-	}
+	})
 }
 
 func main() {
