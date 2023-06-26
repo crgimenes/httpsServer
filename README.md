@@ -43,8 +43,8 @@ A configuração é propositalmente bem simples, apenas um arquivo JSON como no 
 
 ## Executando
 
-Para executar basta chamar `./server` isso vai subir o servidor mas para deixar rodando em segundo plano faça da seguinte maneira:
+Para executar basta chamar `./httpsServer` isso vai subir o servidor mas para deixar rodando em segundo plano faça da seguinte maneira:
 
 ```bash
-nohup ./server&
+nohup ./httpsServer&
 ```
