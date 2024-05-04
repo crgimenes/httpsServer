@@ -3,9 +3,9 @@ package main
 import (
 	"crypto/tls"
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 )
 
 type site struct {
@@ -37,7 +37,7 @@ func logger(next http.Handler) http.Handler {
 
 func main() {
 	// Carrega arquivo JSON com as configurações
-	b, err := ioutil.ReadFile("config.json")
+	b, err := os.ReadFile("config.json")
 	if err != nil {
 		log.Fatal(err)
 	}
